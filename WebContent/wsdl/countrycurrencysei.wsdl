@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="CountryCurrencySEIService" targetNamespace="http://ws.countrycurrency.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://ws.countrycurrency.org/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+<schema xmlns="http://www.w3.org/2001/XMLSchema">
+  <import namespace="http://ws.countrycurrency.org/" schemaLocation="countrycurrencysei_schema1.xsd"/>
+</schema>
+  </wsdl:types>
+  <wsdl:message name="remove">
+    <wsdl:part name="parameters" element="tns:remove">
+    </wsdl:part>
+    <wsdl:part name="validation" element="tns:validation">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllCurrencies">
+    <wsdl:part name="parameters" element="tns:getAllCurrencies">
+    </wsdl:part>
+    <wsdl:part name="validation" element="tns:validation">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeResponse">
+    <wsdl:part name="parameters" element="tns:removeResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCurrencyByCountryResponse">
+    <wsdl:part name="parameters" element="tns:getCurrencyByCountryResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="update">
+    <wsdl:part name="parameters" element="tns:update">
+    </wsdl:part>
+    <wsdl:part name="validation" element="tns:validation">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllCurrenciesResponse">
+    <wsdl:part name="parameters" element="tns:getAllCurrenciesResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllCountriesResponse">
+    <wsdl:part name="parameters" element="tns:getAllCountriesResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addResponse">
+    <wsdl:part name="parameters" element="tns:addResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllCountries">
+    <wsdl:part name="parameters" element="tns:getAllCountries">
+    </wsdl:part>
+    <wsdl:part name="validation" element="tns:validation">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="add">
+    <wsdl:part name="parameters" element="tns:add">
+    </wsdl:part>
+    <wsdl:part name="validation" element="tns:validation">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CountryCurrencyException">
+    <wsdl:part name="CountryCurrencyException" element="tns:CountryCurrencyException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCurrencyByCountry">
+    <wsdl:part name="parameters" element="tns:getCurrencyByCountry">
+    </wsdl:part>
+    <wsdl:part name="validation" element="tns:validation">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ICountryCurrency">
+    <wsdl:operation name="getCurrencyByCountry">
+      <wsdl:input name="getCurrencyByCountry" message="tns:getCurrencyByCountry">
+    </wsdl:input>
+      <wsdl:output name="getCurrencyByCountryResponse" message="tns:getCurrencyByCountryResponse">
+    </wsdl:output>
+      <wsdl:fault name="CountryCurrencyException" message="tns:CountryCurrencyException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="remove">
+      <wsdl:input name="remove" message="tns:remove">
+    </wsdl:input>
+      <wsdl:output name="removeResponse" message="tns:removeResponse">
+    </wsdl:output>
+      <wsdl:fault name="CountryCurrencyException" message="tns:CountryCurrencyException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAllCountries">
+      <wsdl:input name="getAllCountries" message="tns:getAllCountries">
+    </wsdl:input>
+      <wsdl:output name="getAllCountriesResponse" message="tns:getAllCountriesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllCurrencies">
+      <wsdl:input name="getAllCurrencies" message="tns:getAllCurrencies">
+    </wsdl:input>
+      <wsdl:output name="getAllCurrenciesResponse" message="tns:getAllCurrenciesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="add">
+      <wsdl:input name="add" message="tns:add">
+    </wsdl:input>
+      <wsdl:output name="addResponse" message="tns:addResponse">
+    </wsdl:output>
+      <wsdl:fault name="CountryCurrencyException" message="tns:CountryCurrencyException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="update">
+      <wsdl:input name="update" message="tns:update">
+    </wsdl:input>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CountryCurrencySEIServiceSoapBinding" type="tns:ICountryCurrency">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getCurrencyByCountry">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getCurrencyByCountry">
+        <soap:header message="tns:getCurrencyByCountry" part="validation" use="literal">
+        </soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCurrencyByCountryResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CountryCurrencyException">
+        <soap:fault name="CountryCurrencyException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="remove">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="remove">
+        <soap:header message="tns:remove" part="validation" use="literal">
+        </soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="removeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CountryCurrencyException">
+        <soap:fault name="CountryCurrencyException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAllCountries">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAllCountries">
+        <soap:header message="tns:getAllCountries" part="validation" use="literal">
+        </soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllCountriesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="add">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="add">
+        <soap:header message="tns:add" part="validation" use="literal">
+        </soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CountryCurrencyException">
+        <soap:fault name="CountryCurrencyException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAllCurrencies">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAllCurrencies">
+        <soap:header message="tns:getAllCurrencies" part="validation" use="literal">
+        </soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllCurrenciesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="update">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="update">
+        <soap:header message="tns:update" part="validation" use="literal">
+        </soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CountryCurrencySEIService">
+    <wsdl:port name="CountryCurrencySEIPort" binding="tns:CountryCurrencySEIServiceSoapBinding">
+      <soap:address location="http://localhost:9090/CountryCurrencySEIPort"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

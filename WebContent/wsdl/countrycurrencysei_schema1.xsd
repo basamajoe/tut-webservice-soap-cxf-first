@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?><xs:schema xmlns:tns="http://ws.countrycurrency.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://ws.countrycurrency.org/">
+  <xs:element name="add" type="tns:add"/>
+  <xs:element name="addResponse" type="tns:addResponse"/>
+  <xs:element name="getAllCountries" type="tns:getAllCountries"/>
+  <xs:element name="getAllCountriesResponse" type="tns:getAllCountriesResponse"/>
+  <xs:element name="getAllCurrencies" type="tns:getAllCurrencies"/>
+  <xs:element name="getAllCurrenciesResponse" type="tns:getAllCurrenciesResponse"/>
+  <xs:element name="getCurrencyByCountry" type="tns:getCurrencyByCountry"/>
+  <xs:element name="getCurrencyByCountryResponse" type="tns:getCurrencyByCountryResponse"/>
+  <xs:element name="remove" type="tns:remove"/>
+  <xs:element name="removeResponse" type="tns:removeResponse"/>
+  <xs:element name="update" type="tns:update"/>
+  <xs:complexType name="getCurrencyByCountry">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="validation" type="tns:validation"/>
+      <xs:element minOccurs="0" name="country" type="tns:country"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="validation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="password" type="xs:string"/>
+      <xs:element minOccurs="0" name="user" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="country">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="code" type="xs:string"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCurrencyByCountryResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="currency" type="tns:currency"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="currency">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="code" type="xs:string"/>
+      <xs:element minOccurs="0" name="eurFactor" type="xs:double"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="remove">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="validation" type="tns:validation"/>
+      <xs:element minOccurs="0" name="country" type="tns:country"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="removeResponse">
+    <xs:sequence>
+      <xs:element name="wasremoved" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAllCountries">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="validation" type="tns:validation"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAllCountriesResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="countries" type="tns:country"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAllCurrencies">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="validation" type="tns:validation"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAllCurrenciesResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="currencies" type="tns:currency"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="add">
+    <xs:sequence>
+      <xs:element name="validation" type="tns:validation"/>
+      <xs:element minOccurs="0" name="country" type="tns:country"/>
+      <xs:element minOccurs="0" name="currency" type="tns:currency"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addResponse">
+    <xs:sequence>
+      <xs:element name="wasadded" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="update">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="validation" type="tns:validation"/>
+      <xs:element minOccurs="0" name="currency" type="tns:currency"/>
+      <xs:element minOccurs="0" name="country" type="tns:country"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CountryCurrencyException" type="tns:CountryCurrencyException"/>
+  <xs:complexType name="CountryCurrencyException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="validation" nillable="true" type="tns:validation"/>
+</xs:schema>
